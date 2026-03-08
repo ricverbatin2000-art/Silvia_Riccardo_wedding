@@ -753,17 +753,181 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ---- ENVELOPE INTRO ---- */
-    #envelope-intro {
+    /* ---- ROULETTE INTRO ---- */
+    #roulette-intro {
       position: fixed; inset: 0; z-index: 9999;
       display: flex; align-items: center; justify-content: center;
       flex-direction: column;
       background: radial-gradient(ellipse at 40% 40%, #1a0a00 0%, #0d0500 60%, #000 100%);
       overflow: hidden;
-      cursor: pointer;
+      transition: opacity 0.7s ease;
     }
-    #envelope-intro.opening { pointer-events: none; }
-    #envelope-intro.done { display: none; }
+    #roulette-intro.fading { animation: introFadeOut2 0.7s ease-in forwards; }
+    #roulette-intro.done { display: none; }
+
+    .roulette-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 20px;
+    }
+    .roulette-title-top {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700; font-style: italic;
+      background: linear-gradient(135deg, #fde68a, #fbbf24, #f59e0b);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 8px;
+      animation: wlcEnter 0.8s cubic-bezier(.16,1,.3,1) both;
+    }
+    .roulette-title-top span {
+      color: #fff8e1; -webkit-text-fill-color: #fff8e1;
+      font-weight: 300; margin: 0 8px;
+    }
+    .roulette-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      letter-spacing: 0.15em;
+      color: rgba(251,191,36,0.6);
+      margin-bottom: 32px;
+      animation: wlcEnter 0.8s 0.1s cubic-bezier(.16,1,.3,1) both;
+    }
+    .roulette-stage {
+      position: relative;
+      width: min(380px, 75vw);
+      height: min(380px, 75vw);
+      cursor: pointer;
+      animation: wlcEnter 0.8s 0.2s cubic-bezier(.16,1,.3,1) both;
+      transition: transform 0.3s ease;
+    }
+    .roulette-stage:hover { transform: scale(1.03); }
+    .roulette-stage.spinning { cursor: default; pointer-events: none; }
+    .roulette-stage.spinning:hover { transform: none; }
+    .roulette-glow {
+      position: absolute; inset: -30px;
+      background: radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .roulette-img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 40px rgba(251,191,36,0.25));
+      transition: filter 0.3s;
+    }
+    .roulette-stage:hover .roulette-img {
+      filter: drop-shadow(0 0 60px rgba(251,191,36,0.4));
+    }
+    .roulette-center-dot {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px; height: 12px;
+      background: radial-gradient(circle, #fde68a, #d97706);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(251,191,36,0.6);
+      pointer-events: none;
+      z-index: 2;
+      display: none;
+    }
+
+    /* Ball track & ball */
+    .roulette-ball-track {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .roulette-ball {
+      position: absolute;
+      width: 14px; height: 14px;
+      background: radial-gradient(circle at 32% 28%, #ffffff 0%, #f5f5f5 25%, #d4d4d4 55%, #a3a3a3 85%, #737373 100%);
+      border-radius: 50%;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.6),
+        0 0 10px rgba(255,255,255,0.4),
+        inset 0 -1px 2px rgba(0,0,0,0.15);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      z-index: 4;
+    }
+    .roulette-ball.visible { opacity: 1; }
+    .roulette-ball.settled {
+      animation: ballSettle 0.5s ease-out;
+    }
+    @keyframes ballSettle {
+      0%   { filter: brightness(1); }
+      40%  { filter: brightness(1.6); }
+      100% { filter: brightness(1); }
+    }
+    .roulette-ball.in-slot {
+      top: 17%;
+    }
+    /* green flash when ball lands */
+    .roulette-landed-flash {
+      position: absolute; inset: -10%;
+      border-radius: 50%;
+      border: 3px solid rgba(34, 197, 94, 0);
+      pointer-events: none;
+      z-index: 3;
+    }
+    .roulette-landed-flash.flash {
+      animation: greenFlash 1.2s ease-out forwards;
+    }
+    @keyframes greenFlash {
+      0%   { border-color: rgba(34, 197, 94, 0); box-shadow: 0 0 0 rgba(34, 197, 94, 0); transform: scale(0.95); }
+      30%  { border-color: rgba(34, 197, 94, 0.6); box-shadow: 0 0 40px rgba(34, 197, 94, 0.3); transform: scale(1); }
+      100% { border-color: rgba(34, 197, 94, 0); box-shadow: 0 0 0 rgba(34, 197, 94, 0); transform: scale(1.05); }
+    }
+    .roulette-hint {
+      margin-top: 28px;
+      color: rgba(251,191,36,0.5);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; letter-spacing: 0.15em;
+      animation: hintPulse 2.5s ease-in-out infinite;
+      transition: opacity 0.4s;
+    }
+    .roulette-hint-icon { font-size: 1.1rem; margin-right: 6px; }
+    .roulette-hint.hidden { opacity: 0; pointer-events: none; }
+
+    .roulette-enter-btn {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 18px 40px;
+      background: transparent;
+      border: 1.5px solid rgba(251,191,36,0.5);
+      border-radius: 999px;
+      color: rgba(251,191,36,0.9);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(.16,1,.3,1);
+      position: relative; overflow: hidden;
+      margin-top: 24px;
+      opacity: 0; transform: translateY(20px);
+      pointer-events: none;
+    }
+    .roulette-enter-btn.visible {
+      opacity: 1; transform: translateY(0);
+      pointer-events: auto;
+      animation: btnGlow 2s ease-in-out infinite;
+    }
+    @keyframes btnGlow {
+      0%,100% { box-shadow: 0 0 20px rgba(251,191,36,0.1); }
+      50% { box-shadow: 0 0 40px rgba(251,191,36,0.3); }
+    }
+    .roulette-enter-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(251,191,36,0.12), rgba(249,115,22,0.12));
+      opacity: 0; transition: opacity 0.3s; border-radius: 999px;
+    }
+    .roulette-enter-btn:hover { border-color: #fbbf24; color: #fbbf24; transform: scale(1.04); }
+    .roulette-enter-btn:hover::before { opacity: 1; }
+    .roulette-enter-btn svg { width: 18px; height: 18px; transition: transform 0.3s; }
+    .roulette-enter-btn:hover svg { transform: translateX(4px); }
 
     /* floating particles */
     .env-particles { position: absolute; inset: 0; pointer-events: none; }
@@ -778,104 +942,13 @@
       90%  { opacity: 0.4; }
       100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
     }
-
-    /* hint text */
-    .env-hint {
-      position: absolute; bottom: 48px;
-      color: rgba(251,191,36,0.5);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase;
-      animation: hintPulse 2.5s ease-in-out infinite;
+    @keyframes introFadeOut2 {
+      to { opacity: 0; pointer-events: none; }
     }
     @keyframes hintPulse {
       0%,100% { opacity: 0.4; transform: translateY(0); }
       50%      { opacity: 1;   transform: translateY(-4px); }
     }
-
-    /* envelope wrapper */
-    .env-wrap {
-      position: relative;
-      width: min(420px, 88vw);
-      filter: drop-shadow(0 30px 70px rgba(251,191,36,0.2));
-      animation: envAppear 1.2s cubic-bezier(.16,1,.3,1) both;
-      transition: transform 0.4s cubic-bezier(.16,1,.3,1), filter 0.4s;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    @keyframes envAppear {
-      from { opacity: 0; transform: translateY(60px) scale(0.88) rotate(-1deg); }
-      to   { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-    }
-    #envelope-intro:not(.opening):hover .env-wrap {
-      transform: translateY(-8px) scale(1.02) rotate(0.5deg);
-      filter: drop-shadow(0 50px 90px rgba(251,191,36,0.35));
-    }
-
-    /* real photo */
-    .env-photo {
-      width: 100%; display: block; border-radius: 12px;
-    }
-
-    /* S&R overlay on the seal position */
-    .env-seal-overlay {
-      position: absolute;
-      /* position over seal in photo — roughly center-center */
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center;
-      pointer-events: none;
-    }
-    .env-seal-text {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      font-weight: 700; font-style: italic;
-      color: #3b1508;
-      text-shadow: 0 1px 2px rgba(255,220,100,0.3);
-      letter-spacing: 0.05em;
-    }
-    .env-seal-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.5rem, 1.5vw, 0.65rem);
-      color: #5c2a0a;
-      letter-spacing: 0.2em;
-      margin-top: 2px;
-    }
-
-    /* shimmer sweep on hover */
-    .env-shimmer {
-      position: absolute; inset: 0; border-radius: 12px;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
-      background-size: 200% 100%;
-      background-position: 200% 0;
-      transition: background-position 0s;
-      pointer-events: none;
-    }
-    #envelope-intro:not(.opening):hover .env-shimmer {
-      background-position: -200% 0;
-      transition: background-position 0.7s ease;
-    }
-
-    /* opening animation — scale + float up */
-    .opening .env-wrap {
-      animation: envOpen 1s cubic-bezier(.4,0,.2,1) forwards;
-    }
-    @keyframes envOpen {
-      0%   { transform: scale(1) rotate(0deg); }
-      30%  { transform: scale(1.06) rotate(-1.5deg); }
-      100% { transform: scale(0.9) translateY(-30px) rotate(2deg); opacity: 0; }
-    }
-
-    /* fade out whole overlay */
-    #envelope-intro.fading {
-      animation: introFadeOut2 0.6s ease-in forwards;
-    }
-    @keyframes introFadeOut2 {
-      to { opacity: 0; pointer-events: none; }
-    }
-    .opening .env-fade-out {
-      animation: introFadeOut 0.7s 1.3s ease-in forwards;
-    }
-    @keyframes introFadeOut { to { opacity: 0; } }
 
     /* ---- WELCOME PAGE ---- */
     #welcome-page {
@@ -981,22 +1054,35 @@
       .countdown-box { width: 68px; height: 68px; }
       .countdown-box span { font-size: 1.7rem; }
       .countdown { gap: 6px; }
+      .roulette-ball { width: 10px; height: 10px; top: 9%; }
+      .roulette-ball.in-slot { top: 16%; }
     }
   </style>
 </head>
 <body>
 
-<!-- ENVELOPE INTRO -->
-<div id="envelope-intro" onclick="openEnvelope()">
+<!-- ROULETTE INTRO -->
+<div id="roulette-intro">
   <div class="env-particles" id="envParticles"></div>
-  <p class="env-hint">Tocca per aprire</p>
-  <div class="env-wrap env-fade-out">
-    <img src="busta_test.jpg" alt="Invito" class="env-photo" />
-    <div class="env-seal-overlay">
-      <span class="env-seal-text">S&amp;R</span>
-      <span class="env-seal-year">✦ 2026 ✦</span>
+  <div class="roulette-content">
+    <p class="roulette-title-top">S <span>&</span> R</p>
+    <p class="roulette-subtitle">Gira la ruota della fortuna!</p>
+    <div class="roulette-stage" id="rouletteStage" onclick="spinRoulette()">
+      <div class="roulette-glow"></div>
+      <img src="Roulette.png" alt="Roulette" class="roulette-img" id="rouletteImg" />
+      <div class="roulette-ball-track" id="ballTrack">
+        <div class="roulette-ball" id="rouletteBall"></div>
+      </div>
+      <div class="roulette-landed-flash" id="landedFlash"></div>
+      <div class="roulette-center-dot"></div>
     </div>
-    <div class="env-shimmer"></div>
+    <p class="roulette-hint" id="rouletteHint">
+      <span class="roulette-hint-icon">👆</span> Tocca la roulette per girarla
+    </p>
+    <button class="roulette-enter-btn" id="rouletteEnterBtn" onclick="openFromRoulette()">
+      <span>Scopri l'invito</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
   </div>
 </div>
 
@@ -1023,9 +1109,9 @@
 
 
 <script>
-  // ---- ENVELOPE + WELCOME INTRO ----
+  // ---- ROULETTE + WELCOME INTRO ----
   (function() {
-    // particles for envelope
+    // particles for roulette screen
     const c1 = document.getElementById('envParticles');
     for (let i = 0; i < 40; i++) {
       const p = document.createElement('div');
@@ -1043,19 +1129,78 @@
     }
   })();
 
-  function openEnvelope() {
-    const intro = document.getElementById('envelope-intro');
-    if (intro.classList.contains('opening')) return;
-    intro.classList.add('opening');
+  let rouletteSpun = false;
+
+  function spinRoulette() {
+    if (rouletteSpun) return;
+    rouletteSpun = true;
+
+    const img = document.getElementById('rouletteImg');
+    const ballTrack = document.getElementById('ballTrack');
+    const ball = document.getElementById('rouletteBall');
+    const flash = document.getElementById('landedFlash');
+    const stage = document.getElementById('rouletteStage');
+    const hint = document.getElementById('rouletteHint');
+    const btn = document.getElementById('rouletteEnterBtn');
+
+    stage.classList.add('spinning');
+    hint.classList.add('hidden');
+
+    // Show ball on outer rim
+    ball.classList.add('visible');
+
+    // Green 0/RS slot position on the wheel image
+    // The top green RS is near 12 o'clock, ~1 slot right of center top
+    const greenAngle = 5;
+
+    // -- Wheel spins CW --
+    const wheelSpins = 4 + Math.random() * 3;
+    const wheelDeg = wheelSpins * 360 + Math.random() * 360;
+    const wheelDuration = 5000;
+
+    // -- Ball orbits CCW (opposite to wheel, like real roulette) --
+    // Ball absolute angle after spin = -(ballTrackDeg)
+    // Relative to wheel: -(ballTrackDeg) - wheelDeg
+    // Must equal greenAngle (mod 360):
+    //   ballTrackDeg = k*360 - wheelDeg - greenAngle
+    const extraBallSpins = 5 + Math.floor(Math.random() * 3);
+    const k = Math.ceil((wheelDeg + greenAngle) / 360) + extraBallSpins;
+    const ballTrackDeg = k * 360 - wheelDeg - greenAngle;
+    const ballDuration = wheelDuration + 1000; // ball lasts slightly longer
+
+    // Animate wheel CW
+    img.style.transition = `transform ${wheelDuration}ms cubic-bezier(0.15, 0.6, 0.15, 0.98)`;
+    img.style.transform = `rotate(${wheelDeg}deg)`;
+
+    // Animate ball CCW
+    ballTrack.style.transition = `transform ${ballDuration}ms cubic-bezier(0.12, 0.6, 0.08, 0.98)`;
+    ballTrack.style.transform = `rotate(-${ballTrackDeg}deg)`;
+
+    // Ball falls inward (outer rim → pocket) at ~70% of animation
     setTimeout(() => {
-      intro.classList.add('fading');
+      ball.style.transition = 'top 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      ball.classList.add('in-slot');
+    }, ballDuration * 0.65);
+
+    // When ball settles: flash green + show button
+    setTimeout(() => {
+      ball.classList.add('settled');
+      flash.classList.add('flash');
       setTimeout(() => {
-        intro.classList.add('done');
-        // show welcome page
-        const wlc = document.getElementById('welcome-page');
-        wlc.classList.add('visible');
-      }, 650);
-    }, 900);
+        btn.classList.add('visible');
+      }, 400);
+    }, ballDuration + 200);
+  }
+
+  function openFromRoulette() {
+    const intro = document.getElementById('roulette-intro');
+    intro.classList.add('fading');
+    setTimeout(() => {
+      intro.classList.add('done');
+      // show welcome page
+      const wlc = document.getElementById('welcome-page');
+      wlc.classList.add('visible');
+    }, 700);
   }
 
   function enterSite() {
