@@ -1142,7 +1142,7 @@
       <span>S <span style="color:#C58B78">&</span> R</span>
     </a>
     <div class="nav-links">
-      <a onclick="goTo('couple')">Gli Sposi</a>
+      <a onclick="goTo('couple')">Un po' di noi</a>
       <a onclick="goTo('location')">Location</a>
       <a onclick="goTo('timeline')">Timeline</a>
       <a onclick="goTo('rsvp')">RSVP</a>
@@ -1154,7 +1154,7 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a onclick="goTo('couple')">Gli Sposi</a>
+    <a onclick="goTo('couple')">Un po' di noi</a>
     <a onclick="goTo('location')">Location</a>
     <a onclick="goTo('timeline')">Timeline</a>
     <a onclick="goTo('rsvp')">RSVP</a>
@@ -1222,8 +1222,7 @@
       <div class="section-icon" style="background:linear-gradient(135deg,#832727,#BC6636)">
         <svg viewBox="0 0 24 24" fill="white" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
-      <h2 class="section-title">Gli Sposi</h2>
-      <p class="section-sub">La nostra storia d'amore è iniziata come un viaggio on the road, senza una destinazione precisa ma con la certezza di voler percorrere la strada insieme.</p>
+      <h2 class="section-title">Un po' di noi</h2>
     </div>
     <div class="couple-grid">
       <div class="couple-photo-wrap reveal-left">
@@ -1233,18 +1232,7 @@
         </div>
       </div>
       <div class="card-person reveal-right">
-        <div style="display:flex; gap:20px; align-items:center; margin-bottom:20px; flex-wrap:wrap;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="card-person-avatar" style="background:linear-gradient(135deg,#832727,#C58B78)">S</div>
-            <h3>Silvia</h3>
-          </div>
-          <div style="font-size:1.8rem; color:#B57B12; font-family:'Playfair Display',serif; font-style:italic;">&</div>
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="card-person-avatar" style="background:linear-gradient(135deg,#546751,#769088)">R</div>
-            <h3>Riccardo</h3>
-          </div>
-        </div>
-        <p>Appassionata di viaggi e avventure, Silvia ha sempre sognato di esplorare la West Coast americana. Riccardo, fotografo e sognatore, ha il cuore pieno di tramonti e paesaggi desertici. Si sono trovati sulla stessa strada e da quel momento non si sono più fermati.</p>
+        <p>Appassionati di viaggi e avventure, hanno sempre sognato di esplorare la West Coast americana. Tra paesaggi desertici e tramonti mozzafiato, si sono trovati sulla stessa strada e da quel momento non si sono più fermati.</p>
         <div class="couple-quote" style="margin-top:20px;">
           <p>"L'amore è un viaggio, non una destinazione."</p>
           <div class="couple-quote-divider">
@@ -1415,7 +1403,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.89 2 2 0 0 1 3.58 2.67h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
       <h2 class="section-title">RSVP</h2>
-      <p class="section-sub">Facci sapere se ci sarai! Per permetterci di organizzare tutto al meglio, ti chiediamo di darci conferma entro il <strong>31 Luglio 2026</strong></p>
+      <p class="section-sub">Facci sapere se ci sarai! Per permetterci di organizzare tutto al meglio, ti chiediamo di darci conferma entro il <strong>5 Luglio 2026</strong></p>
     </div>
     <div class="rsvp-form-wrap reveal">
       <form id="rsvpForm" onsubmit="handleSubmit(event)">
@@ -1452,11 +1440,10 @@
           </label>
         </div>
         <div class="guest-panel" id="guestPanel">
-          <p class="guest-panel-title">👥 Chi verrà con te?</p>
           <div class="counter-row">
             <div class="counter-label">
               <strong>Adulti aggiuntivi</strong>
-              <span>Oltre a te (max 1)</span>
+              <span>Oltre a te</span>
             </div>
             <div class="counter-control">
               <button type="button" class="counter-btn" onclick="changeCount('adults', -1)">−</button>
@@ -1467,7 +1454,7 @@
           <div class="counter-row">
             <div class="counter-label">
               <strong>Bambini</strong>
-              <span>Under 12 (max 3)</span>
+              <span>Under 12 </span>
             </div>
             <div class="counter-control">
               <button type="button" class="counter-btn" onclick="changeCount('children', -1)">−</button>
@@ -1509,34 +1496,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
       </div>
       <h2 class="section-title">Lista Nozze</h2>
-      <p class="section-sub">Il regalo più bello è avervi con noi in questo giorno speciale. Se volete contribuire al nostro viaggio di nozze sulla West Coast, ecco come fare.</p>
-    </div>
-    <div class="dest-grid reveal">
-      <div class="dest-card">
-        <img src="foto_dainserire1.jpg" alt="Los Angeles" />
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-text"><h3>Los Angeles</h3><p>Santa Monica, Hollywood, Venice Beach</p></div>
-      </div>
-      <div class="dest-card">
-        <img src="foto_dainserire12.jpg" alt="Las Vegas" />
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-text"><h3>Las Vegas</h3><p>Luci, spettacoli e divertimento</p></div>
-      </div>
-      <div class="dest-card">
-        <img src="foto_dainserire3.jpg" alt="Monument Valley" />
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-text"><h3>Monument Valley</h3><p>Paesaggi da sogno del deserto</p></div>
-      </div>
-    </div>
+        </div>
     <div class="gift-cta reveal">
-      <div class="gift-cta-avatar">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
+      <img src="Immagine_lista_nozze.png" alt="Lista Nozze" style="max-width:100%; width:340px; display:block; margin:0 auto 24px;" />
       <h3>Contribuisci al nostro viaggio</h3>
-      <p>Ogni contributo ci aiuterà a realizzare il sogno di una vita: un on the road dalla California all'Arizona!</p>
+      <p>Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno, ma se desiderate comunque farci un regalo, il più gradito sarà un contributo per il nostro primo viaggio da marito e moglie. </p>
       <button class="btn-primary" onclick="document.getElementById('giftModal').classList.add('open')">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-        Vedi coordinate bancarie
+        Scopri come contribuire 
       </button>
     </div>
   </div>
@@ -1641,7 +1608,6 @@
   <div class="modal modal-wrap">
     <button class="modal-close" onclick="document.getElementById('giftModal').classList.remove('open')">✕</button>
     <h2 class="modal-title">Lista Nozze</h2>
-    <p class="modal-sub">Ecco le coordinate per contribuire al nostro viaggio di nozze</p>
     <div class="modal-field">
       <p class="modal-field-label">Intestatario:</p>
       <p class="modal-field-val">Silvia & Riccardo</p>
@@ -1659,7 +1625,7 @@
       <p class="modal-field-label">Causale:</p>
       <p class="modal-field-val">Regalo matrimonio Silvia e Riccardo</p>
     </div>
-    <p class="modal-thanks">Grazie di cuore per il vostro contributo! ❤️</p>
+    <p class="modal-thanks" style="font-size:1.5rem;">Grazie di cuore per il vostro contributo! ❤️</p>
   </div>
 </div>
 
@@ -1779,7 +1745,7 @@
       Dieta:     document.getElementById('dietary').value,
       Messaggio: document.getElementById('message').value,
     };
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVidkgGnOF1hIem1rpMRu1JeSGpXzskofkXyBD576rqAnHfTWHRjFoAp-fEPWKQ-SdQQ/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzen12jDpDDIhnOw3obJ3Nbs0MXKIFld_376r9GwGPGzmeu7eM2zZkndyIaEi4svzXk1g/exec';
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
