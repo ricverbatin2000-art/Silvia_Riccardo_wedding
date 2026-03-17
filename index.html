@@ -158,7 +158,7 @@
 
     /* ---- HERO ---- */
     #hero {
-      position: relative; min-height: 100vh;
+      position: relative; min-height: 100vh; min-height: 100dvh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
@@ -570,6 +570,8 @@
       border-radius: 28px;
       padding: 48px; text-align: center;
       box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+      width: 100%; max-width: 700px; margin: 0 auto;
+      display: block;
     }
     .gift-cta-avatar {
       width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 24px;
@@ -599,7 +601,12 @@
       grid-template-rows: auto;
       gap: 14px;
     }
-    @media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .gallery-item img { height: 150px !important; }
+      .col-span-2 img { height: 180px !important; }
+      .gallery-item[style*="grid-row"] { grid-row: auto !important; }
+    }
     .gallery-item {
       position: relative; overflow: hidden;
       border-radius: 16px; cursor: pointer;
@@ -677,6 +684,9 @@
       max-width: 460px; width: 100%;
       box-shadow: 0 40px 100px rgba(0,0,0,0.25);
       animation: scaleIn 0.3s ease-out;
+    }
+    @media (max-width: 480px) {
+      .modal { padding: 28px 20px; border-radius: 20px; }
     }
     @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
     .modal-title {
@@ -982,12 +992,13 @@
     #welcome-page.done { display: none; }
 
     .wlc-invito {
-      width: 100%; height: 100%;
+      display: block;
+      max-width: 100%;
+      max-height: 100vh;
+      max-height: 100dvh;
+      width: auto;
+      height: auto;
       object-fit: contain;
-      background: #ffffff;
-    }
-    @media (max-width: 768px) {
-      .wlc-invito { object-fit: contain; }
     }
 
     /* Zona cliccabile invisibile in basso */
@@ -1027,7 +1038,6 @@
       flex: 1; height: 1px;
       background: linear-gradient(90deg, transparent, var(--cedar), transparent);
     }
-    .section-divider-leaf { color: var(--sage); font-size: 1.4rem; opacity: 0.5; }
 
     .section-pad::before,
     .section-pad-alt::before {
@@ -1268,10 +1278,6 @@
   </div>
 </section>
 
-<div class="section-divider reveal">
-  <div class="section-divider-line"></div>
-  <span class="section-divider-leaf">&#x2E19;</span>
-  <div class="section-divider-line"></div>
 </div>
 
 <section id="location" class="section-pad-alt">
@@ -1345,10 +1351,6 @@
   </div>
 </section>
 
-<div class="section-divider reveal">
-  <div class="section-divider-line"></div>
-  <span class="section-divider-leaf">&#x2E19;</span>
-  <div class="section-divider-line"></div>
 </div>
 
 <section id="timeline" class="section-pad">
@@ -1412,10 +1414,6 @@
   </div>
 </section>
 
-<div class="section-divider reveal">
-  <div class="section-divider-line"></div>
-  <span class="section-divider-leaf">&#x2E19;</span>
-  <div class="section-divider-line"></div>
 </div>
 
 <section id="rsvp" class="section-pad-alt">
@@ -1505,10 +1503,6 @@
   </div>
 </section>
 
-<div class="section-divider reveal">
-  <div class="section-divider-line"></div>
-  <span class="section-divider-leaf">&#x2E19;</span>
-  <div class="section-divider-line"></div>
 </div>
 
 <section id="gifts" class="section-pad">
@@ -1519,12 +1513,10 @@
       </div>
       <h2 class="section-title">Altre Info</h2>
         </div>
-        <div class="couple-quote" style="margin-top:20px;">
-          <p>"Country roads, take me home to the place I belong"</p>
-          <div class="couple-quote-divider">
     <div class="gift-cta reveal">
-      <img src="Immagine_lista_nozze.png" alt="Altre Info" style="max-width:100%; width:340px; display:block; margin:0 auto 24px;" />
+      <img src="Immagine_lista_nozze.png" alt="Altre Info" style="max-width:100%; width:340px; display:block; margin:0 auto 12px;" />
       <h3>Contribuisci al nostro viaggio</h3>
+      <p style="font-style:italic; color:var(--burgundy); margin-bottom:12px;">"Country roads, take me home to the place I belong"</p>
       <p>Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno, ma se desiderate comunque farci un regalo, il più gradito sarà un contributo per il nostro primo viaggio da marito e moglie. </p>
       <button class="btn-primary" onclick="document.getElementById('giftModal').classList.add('open')">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
@@ -1534,10 +1526,6 @@
   </div>
 </section>
 
-<div class="section-divider reveal">
-  <div class="section-divider-line"></div>
-  <span class="section-divider-leaf">&#x2E19;</span>
-  <div class="section-divider-line"></div>
 </div>
 
 <section id="gallery" class="section-pad-alt">
