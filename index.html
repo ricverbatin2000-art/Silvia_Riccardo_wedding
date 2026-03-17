@@ -979,6 +979,8 @@
       50%      { opacity: 1;   transform: translateY(-4px); }
     }
 
+    body.overlay-open { overflow: hidden; touch-action: none; }
+
     /* ---- WELCOME PAGE ---- */
     #welcome-page {
       display: none;
@@ -986,6 +988,7 @@
       align-items: center; justify-content: center;
       background: #ffffff;
       overflow: hidden;
+      cursor: pointer;
     }
     #welcome-page.visible { display: flex; }
     #welcome-page.fading { animation: introFadeOut2 0.7s ease-in forwards; }
@@ -999,18 +1002,14 @@
       width: auto;
       height: auto;
       object-fit: contain;
+      pointer-events: none;
     }
 
-    /* Zona cliccabile invisibile in basso */
     .wlc-click-zone {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 18%;
+      inset: 0;
       cursor: pointer;
       z-index: 10;
-      /* trasparente, nessun elemento visibile */
     }
 
     @keyframes wlcEnter {
@@ -1162,9 +1161,13 @@
     wlc.classList.add('fading');
     setTimeout(() => {
       wlc.classList.add('done');
+      document.body.classList.remove('overlay-open');
       document.getElementById('site-content').classList.add('visible');
     }, 700);
   }
+
+  // Blocca scroll subito al caricamento (gli overlay sono attivi)
+  document.body.classList.add('overlay-open');
 </script>
 
 <div id="site-content">
