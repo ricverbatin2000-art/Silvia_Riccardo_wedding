@@ -1013,11 +1013,11 @@
     /* ---- MUSIC PLAYER ---- */
     #music-btn {
       position: fixed;
-      bottom: 16px;
-      right: 16px;
+      bottom: calc(24px + env(safe-area-inset-bottom, 20px));
+      right: 24px;
       z-index: 9000;
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(16px);
@@ -1030,27 +1030,16 @@
       justify-content: center;
       transition: transform 0.3s, background 0.3s, border-color 0.3s;
     }
-    @media (max-width: 768px) {
-      #music-btn {
-        width: 30px;
-        height: 30px;
-        right: 14px;
-        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-      }
-    }
     #music-btn:hover {
       transform: scale(1.1);
       background: rgba(255,255,255,0.25);
       border-color: rgba(197,139,120,0.6);
     }
     #music-btn svg {
-      width: 13px;
-      height: 13px;
+      width: 16px;
+      height: 16px;
       color: white;
       transition: opacity 0.2s;
-    }
-    @media (max-width: 768px) {
-      #music-btn svg { width: 9px; height: 9px; }
     }
     /* Anello pulsante quando suona */
     #music-btn::after {
