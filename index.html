@@ -1009,7 +1009,59 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    #site-content { opacity: 0; transition: opacity 0.6s ease; }
+
+    /* ---- MUSIC PLAYER ---- */
+    #music-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9000;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.3s, border-color 0.3s;
+    }
+    #music-btn:hover {
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(197,139,120,0.6);
+    }
+    #music-btn svg {
+      width: 22px;
+      height: 22px;
+      color: white;
+      transition: opacity 0.2s;
+    }
+    /* Anello pulsante quando suona */
+    #music-btn::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(197,139,120,0);
+      transition: border-color 0.3s;
+    }
+    #music-btn.playing::after {
+      border-color: rgba(197,139,120,0.5);
+      animation: musicRing 2s ease-in-out infinite;
+    }
+    @keyframes musicRing {
+      0%, 100% { transform: scale(1);   opacity: 1; }
+      50%       { transform: scale(1.15); opacity: 0.4; }
+    }
+    /* Nascondi il tasto durante gli intro */
+    #music-btn.hidden-intro { display: none; }
+
+        #site-content { opacity: 0; transition: opacity 0.6s ease; }
     #site-content.visible { opacity: 1; }
 
     @media (max-width: 480px) {
@@ -1168,7 +1220,7 @@
       <a onclick="goTo('location')">Location</a>
       <a onclick="goTo('timeline')">Timeline</a>
       <a onclick="goTo('rsvp')">RSVP</a>
-      <a onclick="goTo('gifts')">Altre Info</a>
+      <a onclick="goTo('gifts')">Lista Nozza</a>
       <a onclick="goTo('gallery')">Galleria</a>
     </div>
     <button class="nav-burger" id="burgerBtn" onclick="toggleMenu()">
@@ -1180,7 +1232,7 @@
     <a onclick="goTo('location')">Location</a>
     <a onclick="goTo('timeline')">Timeline</a>
     <a onclick="goTo('rsvp')">RSVP</a>
-    <a onclick="goTo('gifts')">Altre Info</a>
+    <a onclick="goTo('gifts')">Lista Nozza</a>
     <a onclick="goTo('gallery')">Galleria</a>
   </div>
 </nav>
@@ -1501,10 +1553,10 @@
       <div class="section-icon" style="background:linear-gradient(135deg,#B57B12,#BC6636)">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
       </div>
-      <h2 class="section-title">Altre Info</h2>
+      <h2 class="section-title">Lista Nozza</h2>
         </div>
     <div class="gift-cta reveal">
-      <img src="Immagine_lista_nozze.png" alt="Altre Info" style="max-width:100%; width:340px; display:block; margin:0 auto 12px;" />
+      <img src="Immagine_lista_nozze.png" alt="Lista Nozza" style="max-width:100%; width:340px; display:block; margin:0 auto 12px;" />
       <h3>Contribuisci al nostro viaggio</h3>
       <p style="font-style:italic; color:var(--burgundy); margin-bottom:12px;">"Country roads, take me home to the place I belong"</p>
       <p>Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno, ma se desiderate comunque farci un regalo, il più gradito sarà un contributo per il nostro primo viaggio da marito e moglie. </p>
@@ -1687,9 +1739,9 @@
     const wrap = document.getElementById('guestNamesWrap');
     const total = guestCounts.adults + guestCounts.children;
     if (total === 0) { wrap.innerHTML = ''; return; }
-    let html = '<span class="guest-names-label">✏️ Nome e cognome degli ospiti</span>';
+    let html = '<span class="guest-names-label">✏️ Nome e cognome accompagnatore </span>';
     for (let i = 0; i < guestCounts.adults; i++) {
-      html += `<input class="guest-name-input" type="text" id="guest-adult-${i}" placeholder="Nome e cognome Ospite ${i+1}" required />`;
+      html += `<input class="guest-name-input" type="text" id="guest-adult-${i}" placeholder="Nome e cognome accompagnatore ${i+1}" required />`;
     }
     for (let i = 0; i < guestCounts.children; i++) {
       html += `<input class="guest-name-input" type="text" id="guest-child-${i}" placeholder="Nome e cognome Bambino ${i+1}" required />`;
@@ -1784,5 +1836,57 @@
   });
 </script>
 </div>
+
+<!-- MUSICA -->
+<audio id="bgMusic" src="canzone.mp3" loop preload="none"></audio>
+<button id="music-btn" class="hidden-intro" onclick="toggleMusic()" title="Musica">
+  <!-- icona PLAY -->
+  <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <polygon points="6,4 20,12 6,20"/>
+  </svg>
+  <!-- icona PAUSE -->
+  <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:none">
+    <rect x="5" y="4" width="4" height="16" rx="1"/>
+    <rect x="15" y="4" width="4" height="16" rx="1"/>
+  </svg>
+</button>
+
+<script>
+  var _musicPlaying = false;
+
+  function toggleMusic() {
+    var audio = document.getElementById('bgMusic');
+    var btn   = document.getElementById('music-btn');
+    var play  = document.getElementById('icon-play');
+    var pause = document.getElementById('icon-pause');
+    if (_musicPlaying) {
+      audio.pause();
+      play.style.display  = '';
+      pause.style.display = 'none';
+      btn.classList.remove('playing');
+      _musicPlaying = false;
+    } else {
+      audio.play().catch(function(){});
+      play.style.display  = 'none';
+      pause.style.display = '';
+      btn.classList.add('playing');
+      _musicPlaying = true;
+    }
+  }
+
+  // Mostra il tasto solo dopo che l'utente entra nel sito
+  var _origEnterSite = window.enterSite;
+  // monkey-patch: aspetta che enterSite finisca il fade
+  (function() {
+    var origEnter = enterSite;
+    enterSite = function() {
+      origEnter();
+      setTimeout(function() {
+        document.getElementById('music-btn').classList.remove('hidden-intro');
+      }, 1400); // dopo fade-out (700ms) + un po'
+    };
+  })();
+</script>
+
 </body>
 </html>
