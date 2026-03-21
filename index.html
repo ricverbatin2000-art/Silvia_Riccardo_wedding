@@ -365,12 +365,13 @@
       font-size: 1.2rem; font-weight: 700; color: white;
     }
     .card-person h3 { font-family: 'Aeonik', sans-serif; font-size: 1.8rem; color: var(--orange-900); }
-    .card-person p { color: rgba(84,103,81,0.85); font-size: 1.05rem; line-height: 1.7; }
-    .couple-quote { text-align: center; padding-top: 8px; }
+    .card-person p { color: rgba(84,103,81,0.85); font-size: 1.05rem; line-height: 1.7; text-align: justify; }
+    .couple-quote { text-align: center; padding-top: 0; }
+    .couple-quote-divider { margin-top: 16px; }
     .couple-quote p { font-style: italic; font-size: 1.3rem; color: var(--burgundy); }
     .couple-quote-divider {
       display: flex; align-items: center; justify-content: center; gap: 16px;
-      margin-top: 12px;
+      margin-top: 16px; margin-bottom: 16px;
     }
     .couple-quote-divider-line { height: 1px; width: 48px; }
 
@@ -453,9 +454,9 @@
     }
     .timeline-dot {
       position: absolute; left: 0; top: 0;
-      width: 44px; height: 44px; border-radius: 50%;
+      width: 52px; height: 52px;
       display: flex; align-items: center; justify-content: center;
-      z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 2;
     }
     @media (min-width: 640px) {
       .timeline-dot { left: 50%; transform: translateX(-50%); }
@@ -1325,9 +1326,17 @@
         </div>
       </div>
       <div class="card-person reveal-right">
-        <p>Appassionati di viaggi e avventure, hanno sempre sognato di esplorare la West Coast americana. Tra paesaggi desertici e tramonti mozzafiato, si sono trovati sulla stessa strada e da quel momento non si sono più fermati.</p>
-        <div class="couple-quote" style="margin-top:20px;">
-          <p>"L'amore è un viaggio, non una destinazione."</p>
+         <div class="couple-quote-divider">
+            <div class="couple-quote-divider-line" style="background:linear-gradient(90deg,transparent,#C58B78)"></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#832727" style="animation:heartbeat 2s infinite"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <div class="couple-quote-divider-line" style="background:linear-gradient(90deg,#C58B78,transparent)"></div>
+          </div>
+        <p>Ci siamo conosciuti il 5 settembre 2020, durante una festa di laurea. Non potevamo certo immaginare che, esattamente sei anni dopo, quella stessa data sarebbe diventata il giorno più importante della nostra vita.
+Nel corso di questi anni abbiamo condiviso numerose esperienze, chilometri e avventure, uniti dalla passione per i viaggi e dalla voglia di scoprire posti nuovi.
+Proprio durante la nostra ultima grande avventura, un indimenticabile viaggio “on the road” lungo la West Coast americana, è arrivata la proposta nella magia di Las Vegas.
+Quel viaggio ci è rimasto così tanto nel cuore che abbiamo deciso di riviverlo insieme a voi, portando un po’ di quella atmosfera nel nostro matrimonio.
+Ci vediamo il 5 settembre 2026 per brindare insieme e aggiungere una nuova, indimenticabile tappa alla nostra storia.</p>
+        <div class="couple-quote">
           <div class="couple-quote-divider">
             <div class="couple-quote-divider-line" style="background:linear-gradient(90deg,transparent,#C58B78)"></div>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#832727" style="animation:heartbeat 2s infinite"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -1368,7 +1377,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             loc. Montovolo, Grizzana Morandi (BO)
           </p>
-          <p class="location-desc">Una chiesa storica immersa nel verde dell'Appennino Bolognese, perfetta per celebrare il nostro matrimonio in un contesto unico e suggestivo.</p>
+          <p class="location-desc">Un Santuario situato a 912 m di altitudine e immerso nel verde, rappresenta uno dei luoghi di culto più iconici e panoramici dell'intero Appennino bolognese.</p>
           <div class="btn-row">
             <a class="btn-outline" href="https://maps.google.com/?q=44.215703,11.09373" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1395,7 +1404,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Via Castelnuovo, 17, Vergato (BO)
           </p>
-          <p class="location-desc">Un agriturismo elegante con giardino panoramico dove festeggeremo tutta la giornata con un tema West Coast on the Road.</p>
+          <p class="location-desc">Scesi dalla vetta di Montovolo, ci sposteremo all'Agriturismo Serra dei Gatti. Una location immersa nel cuore del panorama appenninico, dove la natura farà da cornice al nostro ricevimento.</p>
           <div class="btn-row">
             <a class="btn-outline" href="https://maps.google.com/?q=44.2702505,11.0975118" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1425,8 +1434,8 @@
     <div class="timeline-wrap">
       <div class="timeline-line"></div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot" style="background:linear-gradient(135deg,#832727,#C58B78)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v4M10 4h4"/><path d="M5 22V10a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12"/><path d="M9 22v-4a3 3 0 0 1 6 0v4"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#832727,#C58B78);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M12 2v4M10 4h4"/><path d="M5 22V10a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12"/><path d="M9 22v-4a3 3 0 0 1 6 0v4"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
         </div>
         <div class="timeline-card">
           <p class="timeline-time">14:30</p>
@@ -1435,8 +1444,8 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot" style="background:linear-gradient(135deg,#BC6636,#B57B12)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M8 22h8M12 11v11M5 2h14l-4 9a5 5 0 0 1-6 0L5 2z"/></svg>
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#BC6636,#B57B12);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M8 22h8M12 11v11M5 2h14l-4 9a5 5 0 0 1-6 0L5 2z"/></svg>
         </div>
         <div class="timeline-card">
           <p class="timeline-time">17:00</p>
@@ -1445,8 +1454,8 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot" style="background:linear-gradient(135deg,#B57B12,#546751)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="21" y1="15" x2="21" y2="22"/><path d="M21 2a5 5 0 0 0-5 5 5 5 0 0 0 5 5"/></svg>
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#B57B12,#546751);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="21" y1="15" x2="21" y2="22"/><path d="M21 2a5 5 0 0 0-5 5 5 5 0 0 0 5 5"/></svg>
         </div>
         <div class="timeline-card">
           <p class="timeline-time">20:00</p>
@@ -1454,8 +1463,8 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot" style="background:linear-gradient(135deg,#BC6636,#832727)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2 1 2 1"/><line x1="2" y1="21" x2="22" y2="21"/><path d="M12 8v3"/><circle cx="12" cy="6" r="1.5"/></svg>
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#BC6636,#832727);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2 1 2 1"/><line x1="2" y1="21" x2="22" y2="21"/><path d="M12 8v3"/><circle cx="12" cy="6" r="1.5"/></svg>
         </div>
         <div class="timeline-card">
           <p class="timeline-time">22:00</p>
@@ -1463,8 +1472,8 @@
         </div>
       </div>
       <div class="timeline-item reveal">
-        <div class="timeline-dot" style="background:linear-gradient(135deg,#769088,#546751)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#769088,#546751);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         </div>
         <div class="timeline-card">
           <p class="timeline-time">22:30</p>
@@ -1572,18 +1581,44 @@
       <div class="section-icon" style="background:linear-gradient(135deg,#B57B12,#BC6636)">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
       </div>
-      <h2 class="section-title">Lista Nozza</h2>
+      <h2 class="section-title">Info</h2>
         </div>
+
+    <!-- BOX LOCATION INFO -->
     <div class="gift-cta reveal">
+      <h3>Location</h3>
+      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">Siamo felicissimi di festeggiare con voi tra le vette dell'Appennino! Per godervi al massimo la giornata, ecco qualche piccolo suggerimento logistico.<br><br>👠 La cerimonia religiosa si terrà in una splendida chiesa immersa nel verde. Essendo situata proprio su un prato, vi consigliamo di scegliere calzature comode (o di munirvi di proteggi-tacchi) per camminare in libertà sull'erba.<br><br>🌿 Se il meteo sarà dalla nostra parte, il ricevimento si svolgerà in parte all'aperto. Anche se speriamo in una giornata di sole, l'aria dell'Appennino rinfresca velocemente dopo il tramonto: un giacchetto o una stola potranno esservi d'aiuto.<br><br>🚗 Entrambe le location si trovano in quota. La strada per raggiungerci è panoramica e suggestiva, ma essendo una tipica strada di montagna, è caratterizzata da diverse curve. Prendetevi tutto il tempo necessario per godervi il paesaggio (e magari un piccolo accorgimento per chi soffre un po' il viaggio!).</p>
+    </div>
+
+    <!-- BOX DRESS CODE -->
+    <div class="gift-cta reveal" style="margin-top:32px;">
+      <h3>Dress Code</h3>
+      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">Non abbiamo previsto un dress code ufficiale: vogliamo che vi sentiate liberi e a vostro agio.<br><br><span style="font-style:italic;">L'importante è che siate voi stessi e pronti a festeggiare insieme a noi!</span></p>
+    </div>
+
+    <!-- BOX BAMBINI -->
+    <div class="gift-cta reveal" style="margin-top:32px;">
+      <h3>Bambini</h3>
+      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">🧒 I più piccoli sono i benvenuti e nella location del ricevimento c'è una piccola area giochi! Per organizzare al meglio gli spazi e il menù dedicato a loro, vi chiediamo solo di segnalarci la loro presenza (e la loro età) nel form di conferma.</p>
+    </div>
+
+    <!-- BOX LISTA NOZZE -->
+    <div class="gift-cta reveal" style="margin-top:32px;">
       <img src="Immagine_lista_nozze.png" alt="Lista Nozza" style="max-width:100%; width:340px; display:block; margin:0 auto 12px;" />
-      <h3>Contribuisci al nostro viaggio</h3>
-      <p style="font-style:italic; color:var(--burgundy); margin-bottom:12px;">"Country roads, take me home to the place I belong"</p>
-      <p>Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno, ma se desiderate comunque farci un regalo, il più gradito sarà un contributo per il nostro primo viaggio da marito e moglie. </p>
-      <button class="btn-primary" onclick="document.getElementById('giftModal').classList.add('open')">
+      <h3>Lista Nozze</h3>
+      <p style="max-width:560px; margin:0 auto 20px; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">Convivendo ormai da tempo, la nostra casa è già piena di tutto ciò che ci serve. Per questo non abbiamo preparato una lista nozze tradizionale. Il pensiero più bello che possiate farci è essere con noi nel nostro grande giorno, ma se volete potete contribuire al nostro primo viaggio da marito e moglie.</p>
+      <button class="btn-primary" onclick="document.getElementById('giftModal').classList.add('open')" style="margin-top:20px;">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-        Scopri come contribuire 
+        Scopri come contribuire
       </button>
     </div>
+
+    <!-- BOX CONTATTI LAST MINUTE -->
+    <div class="gift-cta reveal" style="margin-top:32px;">
+      <h3>Contatti Last Minute</h3>
+      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">📞 Per qualsiasi dubbio o comunicazione urgente il giorno del matrimonio, vi chiediamo gentilmente di non chiamare noi sposi (saremo un po' occupati!). Aggiorneremo questa sezione con il numero e la persona che potrà essere il vostro riferimento.</p>
+    </div>
+
   </div>
 </section>
 
