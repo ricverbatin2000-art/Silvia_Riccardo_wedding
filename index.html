@@ -433,6 +433,8 @@
     .btn-outline svg { width: 16px; height: 16px; }
 
     .timeline-wrap { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline-end-dot { position:absolute; left:15px; top:50%; transform:translateY(-50%); width:14px; height:14px; border-radius:50%; background:var(--mustard); box-shadow:0 2px 10px rgba(0,0,0,0.15); }
+    @media(min-width:640px){ .timeline-end-dot { left:50%; transform:translate(-50%,-50%); } }
     .timeline-line {
       position: absolute; left: 16px; top: 0; bottom: 0; width: 3px;
       background: linear-gradient(to bottom, var(--burgundy), var(--terracotta), var(--mustard));
@@ -1444,6 +1446,15 @@ Ci vediamo il 5 settembre 2026 per brindare insieme e aggiungere una nuova, indi
         </div>
       </div>
       <div class="timeline-item reveal">
+        <div class="timeline-dot" style="background:linear-gradient(135deg,#C58B78,#832727);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="20" height="20"><path d="M6 2 L4 9 Q4 13 7 13 Q10 13 10 9 L8 2 Z"/><line x1="7" y1="13" x2="7" y2="20"/><line x1="4.5" y1="20" x2="9.5" y2="20"/><path d="M18 2 L16 9 Q16 13 19 13 Q22 13 22 9 L20 2 Z"/><line x1="19" y1="13" x2="19" y2="20"/><line x1="16.5" y1="20" x2="21.5" y2="20"/><line x1="9.5" y1="4" x2="14.5" y2="4" stroke-linecap="round"/><circle cx="12" cy="3.5" r="0.5" fill="white"/></svg>
+        </div>
+        <div class="timeline-card">
+          <p class="timeline-time">16:00</p>
+          <h3>Brindisi</h3>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
         <div class="timeline-dot" style="background:linear-gradient(135deg,#BC6636,#B57B12);border-radius:50%;width:44px;height:44px;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M8 22h8M12 11v11M5 2h14l-4 9a5 5 0 0 1-6 0L5 2z"/></svg>
         </div>
@@ -1479,6 +1490,10 @@ Ci vediamo il 5 settembre 2026 per brindare insieme e aggiungere una nuova, indi
           <p class="timeline-time">22:30</p>
           <h3>Let's Party</h3>
         </div>
+      </div>
+      <!-- pallino finale -->
+      <div style="position:relative; height:20px;">
+        <div class="timeline-end-dot"></div>
       </div>
     </div>
   </div>
@@ -1599,7 +1614,7 @@ Ci vediamo il 5 settembre 2026 per brindare insieme e aggiungere una nuova, indi
     <!-- BOX BAMBINI -->
     <div class="gift-cta reveal" style="margin-top:32px;">
       <h3>Bambini</h3>
-      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">🧒 I più piccoli sono i benvenuti e nella location del ricevimento c'è una piccola area giochi! Per organizzare al meglio gli spazi e il menù dedicato a loro, vi chiediamo solo di segnalarci la loro presenza (e la loro età) nel form di conferma.</p>
+      <p style="max-width:560px; margin:0 auto; text-align:justify; color:rgba(84,103,81,0.85); font-size:1.05rem; line-height:1.8;">🧒 I più piccoli sono i benvenuti e nella location del ricevimento c'è una piccola area giochi! Per organizzare al meglio gli spazi e il menù dedicato a loro, vi chiediamo solo di segnalarci la loro presenza nel form di conferma.</p>
     </div>
 
     <!-- BOX LISTA NOZZE -->
@@ -1760,16 +1775,21 @@ Ci vediamo il 5 settembre 2026 per brindare insieme e aggiungere una nuova, indi
     <h2 class="modal-title">Lista Nozze</h2>
     <div class="modal-field">
       <p class="modal-field-label">Intestatario:</p>
-      <p class="modal-field-val">Silvia</p>
+      <p class="modal-field-val">Silvia Tamerlani</p>
     </div>
     <div class="modal-field">
       <p class="modal-field-label">IBAN:</p>
       <div class="modal-iban-row">
-        <code class="modal-field-val">IT60 X054 2811 1010 0000 0123 456</code>
+        <code class="modal-field-val">IT65 D030 6902 5201 0000 0001 868 </code>
+        
         <button class="btn-copy" onclick="copyIban()" title="Copia IBAN">
           <svg id="copyIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         </button>
       </div>
+    </div>
+    <div class="modal-field">
+      <p class="modal-field-label">Banca:</p>
+      <p class="modal-field-val">Intesa Sanpaolo</p>
     </div>
     <div class="modal-field">
       <p class="modal-field-label">Causale:</p>
